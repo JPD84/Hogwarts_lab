@@ -13,8 +13,8 @@
 
   <label for="house_id">House:</label>
   <select name="house_id" id="house_id">
-    <% @houses.each do |house| %>
-    <option value="<%= house.id %>"> <%= house.name %></option>
+    <% House.all.each do |house| %>
+    <option value="<%= house.id %>"><%= house.name %></option>
     <% end %>
   </select>
 

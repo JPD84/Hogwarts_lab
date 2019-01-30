@@ -1,8 +1,3 @@
-require('sinatra')
-require('sinatra/contrib/all')
-require('pry')
-require_relative('../models/student')
-also_reload('../models/*')
 
 get '/students' do
   @students = Student.all()
@@ -10,6 +5,21 @@ get '/students' do
 end
 
 get '/students/new' do
-  @houses = House.all
+  @houses = House.all()
   erb(:"students/new")
+end
+
+get '/students/:id' do
+  @student = Student.find(params[:id])
+  erb( :"students/show" )
+end
+
+
+# get '/students/:id/edit' do
+
+
+post '/students' do
+  @student = Student.new(params)
+  @student.save
+  erb ( :"students/new" )
 end
